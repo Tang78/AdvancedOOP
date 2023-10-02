@@ -1,0 +1,77 @@
+//Orang Tang Enow, otang-enow@myseneca.ca, 149924219, 2023-10-01
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+/*
+*****************************************************************************
+                        Workshop 3
+Full Name  : Orang Tang Enow
+Student ID#: 149924219,
+Email      : otang-enow@myseneca.ca
+Section    : NEE
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+*****************************************************************************
+*/
+1)In reflection, discuss if we can make this function a query or not (do an experiment and discuss your results).
+For the operator []
+ #include <iostream>
+#include <stdexcept>
+
+template<typename T>
+class Collection {
+private:
+    T m_items[100];
+    unsigned m_size;
+
+public:
+    Collection() : m_size(0) {}
+
+    const T& operator[](unsigned index) const {
+        if (index >= m_size) {
+            throw std::out_of_range("Index out of bounds");
+        }
+        return m_items[index];
+    }
+
+    unsigned size() const {
+        return m_size;
+    }
+};
+
+int main() {
+    Collection<int> numbers;
+    numbers[0] = 10;
+    numbers[1] = 20;
+    numbers[2] = 30;
+    numbers[3] = 40;
+    numbers[4] = 50;
+    numbers[5] = 60;
+
+    const Collection<int>& constNumbers = numbers;
+
+    try {
+        std::cout << constNumbers[3] << std::endl; // Query operation, should print 40
+        std::cout << constNumbers[6] << std::endl; // Out of bounds, should throw an exception
+    } catch (const std::out_of_range& e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
+
+    return 0;
+}
+
+In this experiment, we attempt to access elements using the operator[] function on both a non-const Collection object and a const reference to the same object. The const version of the operator[] function is correctly invoked when used on the const object. If the const version of the function is not correctly implemented, the code will not compile or execute as expected.
+
+The results of the experiment demonstrate that the function behaves as a query function, allowing read-only access to the elements of the collection. It confirms that the function can indeed be a query function, and it correctly throws an exception when an out-of-bounds index is accessed, indicating that it does not modify the object's state.
+
+2)I had an issue with my shadow function in OrderedCollection because I was adding the override function.But when I removed it ,it was working well.I also was not calling the SetSmallestItem and setLargestItem in the shadow print function.But the professor was able to draw that to my attention.
+My last problem I faced was trying to display the output as it was given I made use of std::to_String and the static cast to help my implementation
+
+
+3)In reflection, explain why these functions cannot be querries, even though they do not change value.
+The static member functions getSmallestItem() and getLargestItem() in the provided code cannot serve as queries because they are static, class-level functions. Static member functions lack access to non-static (instance) member variables of the class. Queries in object-oriented programming typically provide read-only access to an object's internal state and operate on specific instances of the class. Since these functions are static, they cannot directly access the non-static member variables m_smallestItem and m_largestItem. To create proper query functions, these variables should either be made static (implying they are shared across all instances) or non-static member functions should be created to access them within specific instances of the class.
+
+
+
+
