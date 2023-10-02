@@ -1,0 +1,32 @@
+//Orang Tang Enow, tang-enow@myseneca.ca, 149924219, 2023-09-22
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+/*
+*****************************************************************************
+                        Workshop Two
+Full Name  : Orang Tang Enow
+Student ID#: 149924219
+Email      : otang-enow@myseneca.ca
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+*****************************************************************************
+*/
+
+
+While working on this workshop I went through a lot of learning.First I am getting a mastery of Rule of 5 .Learning how to define the move constructor and assignment operator.
+Copy Operation:
+Involves creating a new copy of an object.
+Requires allocating new memory and copying data from the source to the new object.
+Time-consuming, especially for large or complex objects.
+Commonly used when you need an independent duplicate of an object.
+Involves duplicating data, which can consume time and memory.
+Move Operation:
+Transfers ownership of existing resources (like memory) from source to target.
+No new memory allocation or data copying occurs.
+Highly efficient and faster than copy operations.
+Ideal for objects managing resources (e.g., memory, files) to avoid duplication.
+Reuses the source's resources, saving time and memory.
+Analogous to giving something to someone else instead of making a copy.  	Also I made use of a parse Function that will pass a string to the various variables .I opened the file for reading and used the get line function to make sure it does not read the first line .Then I close and reopen the file and read the first line to a string called line when that's done I pass it so each value is loaded into the variables of the array.
+ I faced the most difficulties in my display .I had to modify my setw multiple times so I could get the exact output.My move constructor was not moving my values correctly .Because I was not moving the variables correctly .Also because of the set fill it will also add (..) to the statistics column so I had to define a value and pass os.fill so that set fill does not affect my statistics region .Lastly I had an issue because the values of name were stored in city and values of city stored in name .I fixed this issue by interchanging their position and the code worked perfectly.i feel like this workshops help my programming skills a lot 
